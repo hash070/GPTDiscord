@@ -68,6 +68,10 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 GOOGLE_API_KEY = EnvService.get_google_search_api_key()
 GOOGLE_SEARCH_ENGINE_ID = EnvService.get_google_search_engine_id()
 
+OPENAI_API_BASE = EnvService.get_openai_api_base()
+os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
+openai.api_base = os.environ["OPENAI_API_BASE"]
+
 E2B_API_KEY = EnvService.get_e2b_api_key()
 
 

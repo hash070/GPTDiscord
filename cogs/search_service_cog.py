@@ -132,6 +132,10 @@ OPENAI_API_KEY = EnvService.get_openai_token()
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
+OPENAI_API_BASE = EnvService.get_openai_api_base()
+os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
+openai.api_base = os.environ["OPENAI_API_BASE"]
+
 WOLFRAM_API_KEY = EnvService.get_wolfram_api_key()
 
 vector_stores = {}

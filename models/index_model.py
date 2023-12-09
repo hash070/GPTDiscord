@@ -789,6 +789,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         try:
             # First, initially set the suffix to the suffix of the attachment
@@ -850,6 +851,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         response = await ctx.respond(embed=EmbedStatics.build_index_progress_embed())
         try:
@@ -1067,6 +1069,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         response = await ctx.respond(embed=EmbedStatics.build_index_progress_embed())
         try:
@@ -1119,6 +1122,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         try:
             document = await self.load_data(
@@ -1151,6 +1155,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         try:
             if server:
@@ -1337,6 +1342,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         try:
             channel_ids: List[int] = []
@@ -1390,6 +1396,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0, model_name=model))
 
@@ -1544,6 +1551,7 @@ class Index_handler:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         if not self.index_storage[ctx.user.id].has_indexes(ctx.user.id):
             await ctx.respond(

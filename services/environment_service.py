@@ -476,6 +476,16 @@ class EnvService:
             )
 
     @staticmethod
+    def get_openai_api_base():
+        try:
+            openai_api_base = os.getenv("OPENAI_API_BASE")
+            if openai_api_base is None:
+                openai_api_base = "https://api.openai.com/v1"
+            return openai_api_base
+        except Exception:
+            return "https://api.openai.com/v1"
+
+    @staticmethod
     def get_wolfram_api_key():
         try:
             openai_token = os.getenv("WOLFRAM_API_KEY")

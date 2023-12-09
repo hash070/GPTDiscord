@@ -227,6 +227,7 @@ class Search:
         else:
             os.environ["OPENAI_API_KEY"] = user_api_key
         openai.api_key = os.environ["OPENAI_API_KEY"]
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
         # Initialize the search cost
         price = 0
