@@ -709,7 +709,7 @@ class Model:
                 if self.openai_organization:
                     headers["OpenAI-Organization"] = self.openai_organization
             async with session.post(
-                "https://api.openai.com/v1/embeddings", json=payload, headers=headers
+                os.environ["OPENAI_API_BASE"] + "/embeddings", json=payload, headers=headers
             ) as resp:
                 response = await resp.json()
 
@@ -760,7 +760,7 @@ class Model:
                 if self.openai_organization:
                     headers["OpenAI-Organization"] = self.openai_organization
             async with session.post(
-                "https://api.openai.com/v1/edits", json=payload, headers=headers
+                os.environ["OPENAI_API_BASE"] + "/edits", json=payload, headers=headers
             ) as resp:
                 response = await resp.json()
                 await self.valid_text_request(response, model=Models.EDIT)
@@ -783,7 +783,7 @@ class Model:
             }
             payload = {"input": text}
             async with session.post(
-                "https://api.openai.com/v1/moderations",
+                os.environ["OPENAI_API_BASE"] + "/moderations",
                 headers=headers,
                 json=payload,
             ) as response:
@@ -840,7 +840,7 @@ class Model:
                     headers["OpenAI-Organization"] = self.openai_organization
 
             async with session.post(
-                "https://api.openai.com/v1/chat/completions",
+                os.environ["OPENAI_API_BASE"] + "/chat/completions",
                 json=payload,
                 headers=headers,
             ) as resp:
@@ -894,7 +894,7 @@ class Model:
                 if self.openai_organization:
                     headers["OpenAI-Organization"] = self.openai_organization
             async with session.post(
-                "https://api.openai.com/v1/completions", json=payload, headers=headers
+                os.environ["OPENAI_API_BASE"] + "/completions", json=payload, headers=headers
             ) as resp:
                 response = await resp.json()
 
@@ -1079,7 +1079,7 @@ class Model:
                     headers["OpenAI-Organization"] = self.openai_organization
 
             async with session.post(
-                "https://api.openai.com/v1/chat/completions",
+                os.environ["OPENAI_API_BASE"] + "/chat/completions",
                 json=payload,
                 headers=headers,
             ) as resp:
@@ -1139,7 +1139,7 @@ class Model:
                 data.add_field("temperature", temperature_override)
 
             async with session.post(
-                "https://api.openai.com/v1/audio/transcriptions",
+                os.environ["OPENAI_API_BASE"] + "/audio/transcriptions",
                 headers={
                     "Authorization": f"Bearer {self.openai_key if not custom_api_key else custom_api_key}",
                 },
@@ -1234,7 +1234,7 @@ class Model:
                         headers["OpenAI-Organization"] = self.openai_organization
 
                 async with session.post(
-                    "https://api.openai.com/v1/completions",
+                    os.environ["OPENAI_API_BASE"] + "/completions",
                     json=payload,
                     headers=headers,
                 ) as resp:
@@ -1280,7 +1280,7 @@ class Model:
                     if self.openai_organization:
                         headers["OpenAI-Organization"] = self.openai_organization
                 async with session.post(
-                    "https://api.openai.com/v1/chat/completions",
+                    os.environ["OPENAI_API_BASE"] + "/chat/completions",
                     json=payload,
                     headers=headers,
                 ) as resp:
@@ -1306,7 +1306,7 @@ class Model:
             }
             headers = {"Authorization": f"Bearer {api_key}"}
             async with session.post(
-                "https://api.openai.com/v1/completions", json=payload, headers=headers
+                os.environ["OPENAI_API_BASE"] + "/completions", json=payload, headers=headers
             ) as resp:
                 response = await resp.json()
                 try:
@@ -1475,7 +1475,7 @@ class Model:
             for _ in range(self.num_images):
                 task = self.make_image_request_individual(
                     session,
-                    "https://api.openai.com/v1/images/generations",
+                    os.environ["OPENAI_API_BASE"] + "/images/generations",
                     payload,
                     headers,
                 )
@@ -1533,7 +1533,7 @@ class Model:
             for _ in range(num_images):
                 task = self.make_image_request_individual(
                     session,
-                    "https://api.openai.com/v1/images/generations",
+                    os.environ["OPENAI_API_BASE"] + "/images/generations",
                     payload,
                     headers,
                 )
@@ -1590,7 +1590,7 @@ class Model:
                 raise_for_status=True, timeout=aiohttp.ClientTimeout(total=300)
             ) as session:
                 async with session.post(
-                    "https://api.openai.com/v1/images/generations",
+                    os.environ["OPENAI_API_BASE"] + "/images/generations",
                     json=payload,
                     headers=headers,
                 ) as resp:
@@ -1609,7 +1609,7 @@ class Model:
                     )
 
                     async with session.post(
-                        "https://api.openai.com/v1/images/variations",
+                        os.environ["OPENAI_API_BASE"] + "/images/variations",
                         headers={
                             "Authorization": f"Bearer {self.openai_key if not custom_api_key else custom_api_key}",
                         },
